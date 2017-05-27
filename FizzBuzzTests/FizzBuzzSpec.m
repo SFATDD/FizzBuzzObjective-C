@@ -30,8 +30,9 @@ describe(@"FizzBuzz", ^{
     });
     
     context(@"when given a normal number", ^{
-        pending(@"should return a string", ^{
-            [[[[fizzBuzz shout:1] class] should] equal:[NSString class]];
+        it(@"should return a string", ^{
+            Boolean isString = [[fizzBuzz shout:1] isKindOfClass:[NSString class]];
+            [[theValue(isString) should] beTrue];
         });
         
         it(@"1 should return '1'", ^{
