@@ -9,7 +9,11 @@
 #import "FizzBuzz.h"
 
 @implementation FizzBuzz
-- (NSString *)shout:(NSInteger)number { 
+- (NSString *)shout:(NSInteger)number {
+    if (number % 3 == 0) {
+        return @"fizz";
+    }
+    
     return [@(number) stringValue];
 }
 @end

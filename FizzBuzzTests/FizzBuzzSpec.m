@@ -13,23 +13,40 @@
 SPEC_BEGIN(FizzBuzzSpec)
 
 describe(@"FizzBuzz", ^{
+    __block id fizzBuzz = nil;
+    
+    beforeAll(^{
+        fizzBuzz = [FizzBuzz new];
+    });
+    
+    afterAll(^{
+        fizzBuzz = nil;
+    });
+    
     context(@"when newly created", ^{
         it(@"not nil", ^{
-            id fizzBuzz = [FizzBuzz new];
             [[fizzBuzz shouldNot] beNil];
         });
     });
     
     context(@"when given a normal number", ^{
         pending(@"should return a string", ^{
-            id fizzBuzz = [FizzBuzz new];
             [[[[fizzBuzz shout:1] class] should] equal:[NSString class]];
         });
         
         it(@"1 should return '1'", ^{
-           id fizzBuzz = [FizzBuzz new];
-           [[[fizzBuzz shout:1] should] equal:@"1"];
+            [[[fizzBuzz shout:1] should] equal:@"1"];
            });
+        
+        it(@"2 should return '2'", ^{
+            [[[fizzBuzz shout:2] should] equal:@"2"];
+        });
+    });
+    
+    context(@"when given a fizz number", ^{
+        it(@"should return 'fizz'", ^{
+            [[[fizzBuzz shout:3] should] equal:@"fizz"];
+        });
     });
 });
 
